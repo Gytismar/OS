@@ -39,8 +39,8 @@ function Get-Coordinates
 {
   [CmdletBinding()] 
   Param(
-    [Parameter(Mandatory=$true)][String][ValidateNotNullOrEmpty] $Address,
-    [Parameter(Mandatory=$true)][String][ValidateNotNullOrEmpty] $API_Key,
+    [Parameter(Mandatory=$true)][String][ValidateNotNullOrEmpty()] $Address,
+    [Parameter(Mandatory=$true)][String][ValidateNotNullOrEmpty()] $API_Key,
     #Mandatory - privalomas parametras (adresas kurio ieskos)
     #Position - is kurios pozicijos ims (nulines/pirmos ir galima ivesti adresa nenurodant paramentro vardo (-Address))
     #ValueFromPipeline - leidzia kviesti funkcija pipeline principu (t.y. "Sauletekio al. 11 | Get-Coordinates")
