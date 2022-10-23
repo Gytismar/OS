@@ -1,6 +1,4 @@
-﻿$API_Key = "" #Google maps API raktas, su kuriuo gali kalbetis su google maps servisais ir gauti ju informacija 
-
-<#
+﻿<#
 .SYNOPSIS
 Displays information about a certain place or address
 .DESCRIPTION
@@ -36,11 +34,12 @@ Postal Code:	20500
 Latitude:		38.8976633
 Longitude:		-77.03657389999999
 #>
+$API_Key = Read-Host "Api key"
 function Get-Coordinates
 {
-  [CmdletBinding()] 
+  [CmdletBinding(PositionalBinding=$False)] 
   Param(
-    [Parameter(Mandatory=$true, Position=0, ValueFromPipeline=$true)][String] $Address,
+    [Parameter(Mandatory=$true, Position=0, ValueFromPipeline=$true)][String][ValidateNotNullOrEmpty] $Address,
 
     #Mandatory - privalomas parametras (adresas kurio ieskos)
     #Position - is kurios pozicijos ims (nulines/pirmos ir galima ivesti adresa nenurodant paramentro vardo (-Address))
