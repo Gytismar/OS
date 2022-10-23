@@ -34,13 +34,13 @@ Postal Code:	20500
 Latitude:		38.8976633
 Longitude:		-77.03657389999999
 #>
-$API_Key = Read-Host "Api key"
+
 function Get-Coordinates
 {
-  [CmdletBinding(PositionalBinding=$False)] 
+  [CmdletBinding()] 
   Param(
-    [Parameter(Mandatory=$true, Position=0, ValueFromPipeline=$true)][String][ValidateNotNullOrEmpty] $Address,
-
+    [Parameter(Mandatory=$true)][String][ValidateNotNullOrEmpty] $Address,
+    [Parameter(Mandatory=$true)][String][ValidateNotNullOrEmpty] $API_Key,
     #Mandatory - privalomas parametras (adresas kurio ieskos)
     #Position - is kurios pozicijos ims (nulines/pirmos ir galima ivesti adresa nenurodant paramentro vardo (-Address))
     #ValueFromPipeline - leidzia kviesti funkcija pipeline principu (t.y. "Sauletekio al. 11 | Get-Coordinates")
