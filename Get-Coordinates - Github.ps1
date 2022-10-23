@@ -48,13 +48,8 @@ function Get-Coordinates
     [Parameter()] [Switch] $OutputAsObject
   )
 
-  Begin{
-        If(!$API_Key) #Patikrina, ar yra API raktas
-        {
-            Throw "Reikia prideti API rakta"
-        }
-    }
-   Process{
+  
+  Process{
         ForEach ($item in $Address){
             Try{
                 $WebAddress = $Item.replace(" ","+") #pakeiciamas ivesto adreso string tarpai i +, nes tarpu negali buti ieskant (pvz. https://www.google.com/maps/place/Saul%C4%97tekio+al.+11)
