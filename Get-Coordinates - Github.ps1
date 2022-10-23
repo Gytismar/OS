@@ -39,8 +39,8 @@ function Get-Coordinates
 {
   [CmdletBinding()] 
   Param(
-    [Parameter(Mandatory=$true)][String][ValidateNotNullOrEmpty()] $Address,
-    [Parameter(Mandatory=$true)][String][ValidateNotNullOrEmpty()] $API_Key,
+    [Parameter(Mandatory=$true)][ValidateNotNullOrEmpty()][String] $Address,
+    [Parameter(Mandatory=$true)][ValidateNotNullOrEmpty()][String] $API_Key,
     #Mandatory - privalomas parametras (adresas kurio ieskos)
     #Position - is kurios pozicijos ims (nulines/pirmos ir galima ivesti adresa nenurodant paramentro vardo (-Address))
     #ValueFromPipeline - leidzia kviesti funkcija pipeline principu (t.y. "Sauletekio al. 11 | Get-Coordinates")
@@ -54,7 +54,7 @@ function Get-Coordinates
             Try{
                 $WebAddress = $Item.replace(" ","+") #pakeiciamas ivesto adreso string tarpai i +, nes tarpu negali buti ieskant (pvz. https://www.google.com/maps/place/Saul%C4%97tekio+al.+11)
 
-                $JsonReturn = Invoke-WebRequest "https://maps.googleapis.com/maps/api/geocode/json?address=$WebAddress&key=$API_Key" -ErrorVariable ErrorMessage
+                $JsonReturn = Invoke-WebRequest "https://maps.googleapis.com/maps/api/geocode/json?address=$WebAddress&key=$API_Key" -ErrorVariable ErrorMessage -UseBasicParsing
                 #Invoke-WebRequest siuncia uzklausa google maps atitinkamu adresu, naujant pateikta gatves adresa ($WebAddress), kurio norima ieskoti bei API rakta ($API_Key), kad leistu naudotis servisu ne per narsykle
                 #Gaunami duomenys JSON formatu
                 #ErrorVariable isaugo bet kokia gauta klaida ErrorVMessage
